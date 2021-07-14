@@ -1,0 +1,432 @@
+{
+  "intents": [
+    {
+      "intent": "decision",
+      "examples": [
+        {
+          "text": "cool"
+        },
+        {
+          "text": "for how much ?"
+        },
+        {
+          "text": "i don't really know"
+        },
+        {
+          "text": "i'm not sure"
+        },
+        {
+          "text": "no"
+        },
+        {
+          "text": "not really"
+        },
+        {
+          "text": "ofcourse"
+        },
+        {
+          "text": "ok"
+        },
+        {
+          "text": "okay"
+        },
+        {
+          "text": "yeah"
+        },
+        {
+          "text": "yes"
+        },
+        {
+          "text": "yes i would like to buy it"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "items",
+      "examples": [
+        {
+          "text": "board game"
+        },
+        {
+          "text": "car toys"
+        },
+        {
+          "text": "charger"
+        },
+        {
+          "text": "dish washer"
+        },
+        {
+          "text": "drink"
+        },
+        {
+          "text": "drinks"
+        },
+        {
+          "text": "food"
+        },
+        {
+          "text": "keyboard"
+        },
+        {
+          "text": "mouse"
+        },
+        {
+          "text": "oil"
+        },
+        {
+          "text": "paper"
+        },
+        {
+          "text": "phone"
+        },
+        {
+          "text": "pin"
+        },
+        {
+          "text": "toys"
+        },
+        {
+          "text": "TV"
+        },
+        {
+          "text": "video game"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "money",
+      "examples": [
+        {
+          "text": "10"
+        },
+        {
+          "text": "100"
+        },
+        {
+          "text": "1000"
+        },
+        {
+          "text": "15"
+        },
+        {
+          "text": "20"
+        },
+        {
+          "text": "200"
+        },
+        {
+          "text": "30"
+        },
+        {
+          "text": "300"
+        },
+        {
+          "text": "35"
+        },
+        {
+          "text": "40"
+        },
+        {
+          "text": "400"
+        },
+        {
+          "text": "45"
+        },
+        {
+          "text": "50"
+        },
+        {
+          "text": "500"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "random",
+      "examples": [
+        {
+          "text": "are u a real person ?"
+        },
+        {
+          "text": "for how much?"
+        },
+        {
+          "text": "is it good toys?"
+        },
+        {
+          "text": "why not ? is it not good enough ?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "welcoming",
+      "examples": [
+        {
+          "text": "hey"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "thank u"
+        },
+        {
+          "text": "thank you"
+        },
+        {
+          "text": "yes i do need help"
+        },
+        {
+          "text": "yes please"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "we don't sell it "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_8_1626305429457",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "welcoming",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "what are u looking for ?"
+              },
+              {
+                "text": "what is your budge it ?"
+              },
+              {
+                "text": "what kind of items you looking for ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#welcoming",
+      "dialog_node": "node_1_1626303470784",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "we can find something you like , what u need ?"
+              },
+              {
+                "text": "it's enough for simple things, may i ask what u need to buy ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#money",
+      "dialog_node": "node_2_1626304303904",
+      "previous_sibling": "node_1_1626303470784"
+    },
+    {
+      "type": "standard",
+      "title": "decision",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "if you are sure then go to this link www.google.come"
+              },
+              {
+                "text": "please make sure"
+              },
+              {
+                "text": "okay, cool "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#decision",
+      "dialog_node": "node_2_1626305106574",
+      "previous_sibling": "node_5_1626304841821"
+    },
+    {
+      "type": "standard",
+      "title": "budge it ",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "that's a lot "
+              },
+              {
+                "text": "good enough "
+              },
+              {
+                "text": "this will do "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#money",
+      "dialog_node": "node_5_1626304841821",
+      "previous_sibling": "node_7_1626304704927"
+    },
+    {
+      "type": "standard",
+      "title": "what you can get from the store",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "we have it ! "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#items",
+      "dialog_node": "node_7_1626304704927",
+      "previous_sibling": "node_2_1626304303904"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "why do you want to know ?"
+              },
+              {
+                "text": "why are u attacking me ?"
+              },
+              {
+                "text": "relax please "
+              },
+              {
+                "text": "i know "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#random",
+      "dialog_node": "node_8_1626305429457",
+      "previous_sibling": "node_2_1626305106574"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              },
+              {
+                "text": "hi, how can i help you ?"
+              },
+              {
+                "text": "hey, do you need help ?"
+              },
+              {
+                "text": "hello, may i help you ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "talk",
+  "language": "en",
+  "description": "can talk !"
+}
